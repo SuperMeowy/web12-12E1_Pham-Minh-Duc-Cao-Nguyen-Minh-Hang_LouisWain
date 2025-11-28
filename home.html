@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ФЭС Archive | Home</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Homepage Specific Overrides --- */
+        
+        /* Unique Hero for Home */
+        #home-hero {
+            background-image: url('assets/home-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0;
+            position: relative;
+        }
+
+        #home-hero h1 {
+            color: #fff;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            font-size: 4rem;
+        }
+
+        #home-hero p {
+            color: #f2eee7;
+            font-weight: 300;
+            letter-spacing: 1px;
+            font-size: 1.2rem;
+        }
+
+        /* --- NEW: Mission Section Layout --- */
+        #mission {
+            background: #fff;
+            /* Ensure section has height for the internal scroll to work against */
+            height: 100vh; 
+            max-height: 900px; /* Optional cap */
+        }
+
+        .mission-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            height: 100%;
+            padding: 2rem 0;
+        }
+
+        .mission-text {
+            font-size: 1.6rem;
+            line-height: 1.6;
+            font-family: var(--font-main);
+            color: var(--accent-dark);
+            padding-right: 2rem;
+            text-align: left; /* Changed from center for 2-col layout */
+        }
+
+        .mission-text strong {
+            color: var(--orange);
+            font-weight: 500;
+        }
+
+        /* The Scrollable Column */
+        .scroll-gallery {
+            height: 70vh; /* Fixed height is REQUIRED for overflow to work */
+            overflow-y: auto; /* Enables independent scrolling */
+            padding-right: 15px; /* Space for scrollbar */
+            
+            scrollbar-width: thin;
+            scrollbar-color: var(--orange) #f0f0f0;
+            
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+
+            /* Visual polish */
+            mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+        }
+
+        /* Scrollbar Styling (Chrome/Safari/Edge) */
+        .scroll-gallery::-webkit-scrollbar {
+            width: 6px;
+        }
+        .scroll-gallery::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 4px;
+        }
+        .scroll-gallery::-webkit-scrollbar-thumb {
+            background-color: var(--orange);
+            border-radius: 4px;
+        }
+
+        .scroll-gallery img {
+            width: 100%;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            display: block;
+            filter: grayscale(100%);
+            transition: 0.3s ease;
+            scroll-snap-align: center;
+        }
+
+        .scroll-gallery img:hover {
+            filter: grayscale(0%);
+        }
+
+        /* --- Collections Grid (Existing) --- */
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .collection-card {
+            position: relative;
+            height: 450px;
+            border-radius: 4px;
+            overflow: hidden;
+            text-decoration: none;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .collection-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .collection-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: grayscale(20%) contrast(0.9);
+        }
+
+        .collection-card:hover img {
+            transform: scale(1.05);
+            filter: grayscale(0%) contrast(1);
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(23, 20, 18, 0.95), rgba(23, 20, 18, 0.7), rgba(23, 20, 18, 0.5), transparent);
+            color: #f2eee7;
+        }
+
+        .card-overlay h3 {
+            font-family: var(--font-main);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .card-overlay p {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--bright-orange); /* Fixed var name */
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255,255,255,0.9);
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-dark);
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        /* --- News Items (Existing) --- */
+        .news-item {
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            transition: background 0.3s;
+        }
+        
+        .news-item:hover {
+            padding-left: 1rem;
+            border-bottom: 1px solid var(--orange);
+            transition: 0.25s ease-in-out;
+        }
+
+        .news-item:not(:hover) {
+            transition: 0.2s ease-in-out;
+        }
+        
+        .news-date {
+            font-family: var(--font-sans);
+            color: var(--orange);
+            font-weight: 500;
+            min-width: 120px;
+        }
+
+        .news-title {
+            font-family: var(--font-main);
+            font-size: 1.5rem;
+            color: var(--accent-dark);
+            flex-grow: 1;
+        }
+
+        /* Mobile Adjustments for Split Layout */
+        @media (max-width: 800px) {
+            #mission {
+                height: auto;
+                max-height: none;
+                padding: 4rem 0;
+            }
+            .mission-layout {
+                grid-template-columns: 1fr;
+                height: auto;
+                gap: 2rem;
+            }
+            .scroll-gallery {
+                height: 400px; /* Shorter on mobile */
+            }
+            .mission-text {
+                padding-right: 0;
+                text-align: center;
+            }
+            .news-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo"> 
+                <a href="home.html">
+                    <p>ФЭС</p><p style="color: var(--orange)">Archive</p>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="#featured">Exhibitions</a>
+                <a href="#mission">Mission</a>
+                <a href="#news">Journal</a>
+                <a href="#connect">Newsletter</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Hero -->
+        <section id="home-hero" class="unbound">
+            <div style="backdrop-filter: blur(5px); padding: 5vh; border-radius: 1em;">
+            <h1>The Archive of the Mind</h1>
+            <p>Preserving the obscure, the psychedelic, and the forgotten.</p>
+            </div>
+        </section>
+    
+        <!-- Mission Statement -->
+        <!-- Mission Statement & Scrollable Gallery -->
+        <section id="mission" class="unbound">
+            <div class="container" style="height: 100%;">
+                <div class="mission-layout">
+                    
+                    <!-- Left Column: Text -->
+                    <div class="mission-text">
+                        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Our Mission</h2>
+                        <p>
+                            The <strong>ФЭС Foundation</strong> is dedicated to curating works that challenge the boundaries of perception. 
+                        </p>
+                        <br>
+                        <p>
+                            From Victorian eccentricity to the geometry of the subconscious, we maintain a living library of artists who saw the world through a different lens. We believe that art is not just a mirror to reality, but a door to the unseen.
+                        </p>
+                    </div>
+
+                    <!-- Right Column: Independent Scroll -->
+                    <div class="scroll-gallery">
+                        <!-- Replace these sources with your assets -->
+                        <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=1000&auto=format&fit=crop" alt="Classic Sculpture">
+                        <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=1000&auto=format&fit=crop" alt="Abstract Paint">
+                        <img src="https://images.unsplash.com/photo-1515405295579-ba7f9f92f4b3?q=80&w=1000&auto=format&fit=crop" alt="Vintage Drawing">
+                        <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1000&auto=format&fit=crop" alt="Archive Paper">
+                        <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&w=1000&auto=format&fit=crop" alt="Painted Eye">
+                        <img src="https://images.unsplash.com/photo-1620641788421-7f1c33b74304?q=80&w=1000&auto=format&fit=crop" alt="Surreal Art">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    
+        <!-- Featured Collections -->
+        <section id="featured" class="unbound">
+            <div class="container">
+                <h2>Current and Upcoming Exhibitions</h2>
+                <div class="collection-grid">
+                    
+                    <!-- Card 1: Louis Wain (Links to your previous page) -->
+                    <!-- Assuming your previous file is named index.html or wain.html -->
+                    <a href="index.html" class="collection-card">
+                        <span class="status-badge">Now Open</span>
+                        <img src="assets/12.jpg" alt="Louis Wain Art">
+                        <div class="card-overlay">
+                            <p>The Kaleidoscope Cats</p>
+                            <h3>Louis Wain</h3>
+                        </div>
+                    </a>
+
+                    <!-- Card 2: Future/Other Concept -->
+                    <a href="#" class="collection-card">
+                        <span class="status-badge">Coming Spring 2026</span>
+                        <img src="assets/codex.jpg" alt="Botanical Illustration">
+                        <div class="card-overlay">
+                            <p>Botanical Horror</p>
+                            <h3>The Codex Seraphinianus</h3>
+                        </div>
+                    </a>
+
+                    <!-- Card 3: Another Concept -->
+                    <a href="#" class="collection-card">
+                        <span class="status-badge">Coming Summer 2026</span>
+                        <img src="assets/hilma.jpg" alt="Abstract Geometry">
+                        <div class="card-overlay">
+                            <p>Sacred Geometry</p>
+                            <h3>Hilma af Klint</h3>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- News / Journal Section -->
+        <section id="news" class="unbound" style="background-color: #eae6de;">
+            <div class="container">
+                <h2>Archive Notes</h2>
+                <div class="news-list">
+                    <a href="#" class="news-item">
+                        <span class="news-date">NOV 28, 2025</span>
+                        <span class="news-title">Restoration begins on the "Electrical" Wain lithographs.</span>
+                        <span>&rarr;</span>
+                    </a>
+                    <a href="#" class="news-item">
+                        <span class="news-date">OCT 15, 2025</span>
+                        <span class="news-title">New acquisition: The private diaries of Richard Dadd.</span>
+                        <span>&rarr;</span>
+                    </a>
+                    <a href="#" class="news-item">
+                        <span class="news-date">SEP 01, 2025</span>
+                        <span class="news-title">Curator's Note: Why we are keeping the lights low.</span>
+                        <span>&rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Newsletter / CTA -->
+        <section id="connect" class="unbound ticket-section" style="background-image: url('assets/orange.png'); background-color: var(--accent-dark); background-color: white;">
+            <div class="ticket-overlay" style="max-width: 800px; text-align: center;">
+                <h2 style="color: var(--accent-dark);">Join the Foundation</h2>
+                <p class="ticket-sub" style="color: #666;">Receive the quarterly "Obscura" journal and priority access to new openings.</p>
+                <form class="ticket-form" style="flex-direction: row; gap: 10px;">
+                    <input type="email" placeholder="Email Address" required style="flex: 2;">
+                    <button type="submit" style="flex: 1; margin: 0;">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="logo"> <p style="color:#b3b3b3;">ФЭС</p><p style="color: var(--orange);">Archive</p></div>
+                    <br>
+                    <p style="color: #b3b3b3; max-width: 300px;">
+                        Creating an archive of the mind.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h3>Locations</h3>
+                    <ul>
+                        <li><a href="#">London HQ</a></li>
+                        <li><a href="#">Paris Annex</a></li>
+                        <li><a href="#">Virtual Vault</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin-top: 4rem; border-top: 1px solid #333; padding-top: 1rem; color: #AAA; font-size: 0.9rem;">
+                &copy; 2025 ФЭС Foundation. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Optional: Reuse the same script if you want navbar scrolling effects -->
+    <script>
+        const nav = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll <= 0) {
+                nav.classList.remove('nav-hidden');
+            }
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                nav.classList.add('nav-hidden');
+            } else {
+                nav.classList.remove('nav-hidden');
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
