@@ -13,11 +13,11 @@
 <body>
     <header>
         <nav id="navbar">
-            <div class="logo"> <p>ФЭС</p><p style="color: var(--orange)">Archive</p></div>
+            <div class="logo"> <a href=""><p>ФЭС</p><p style="color: var(--orange)">Archive</p></a></div>
             <div class="nav-links">
                 <a href="#hero">Home</a>
-                <a href="#gallery">Collection</a>
                 <a href="#about">About</a>
+                <a href="#gallery">Collection</a>
                 <a href="#tickets">Order Tickets</a>
             </div>
         </nav>
@@ -85,9 +85,10 @@
                 </div>
             </div>
         </section>
-
-        <section id="tickets" class="unbound ticket-section">
-            <div class="ticket-overlay">
+        
+        <section id="tickets" class="unbound ticket-section">\
+            <div class="flex-horizontal">
+                <div class="ticket-overlay">
                 <h2>Reserve Your Visit</h2>
                 <p class="ticket-sub">Step into the whimsical world of Louis Wain.</p>
                 <form class="ticket-form">
@@ -95,14 +96,40 @@
                     <input type="email" id="email" name="email" placeholder="Email Address" required>
                     <select id="ticket-type" name="ticket-type" required>
                         <option value="" disabled selected>Select Ticket Type</option>
-                        <option value="regular">Regular Admission — $18</option>
-                        <option value="curator">Curator’s Twilight Tour — $32</option>
-                        <option value="midnight">Catwalk Experience — $45</option>
+                        <option value="regular">Regular Admission</option>
+                        <option value="curator">Curator’s Twilight Tour</option>
+                        <option value="midnight">Catwalk Experience</option>
                     </select>
                     <input type="date" id="arrival-date" name="arrival-date" required>
                     <button type="submit">Book Ticket</button>
                 </form>
             </div>
+            <div class="carousel-container">
+                <button class="nav-arrow prev-arrow" id="prevBtn">&#8249;</button>
+                <button class="nav-arrow next-arrow" id="nextBtn">&#8250;</button>
+
+                <div class="carousel-content">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide active">
+                        <h3>Regular Admission</h3>
+                        <p class="price">$18</p>
+                        <p>Enjoy full-day access to the entire Louis Wain collection and our permanent exhibitions. Explore at your own pace.</p>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide">
+                        <h3>Curator’s Twilight Tour</h3>
+                        <p class="price">$32</p>
+                        <p>An exclusive after-hours guided tour with our head curator, offering deep insights into Wain's life, work, and fragile mind.</p>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide">
+                        <h3>Catwalk Experience</h3>
+                        <p class="price">$45</p>
+                        <p>An immersive evening featuring live music, themed cocktails, and a special presentation on Wain's psychedelic art period.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         </section>
     </main>
 
@@ -151,6 +178,50 @@
                 navbar.classList.remove('nav-hidden');
             }
             lastScrollTop = scrollTop;
+        });
+
+        const slides = document.querySelectorAll('.carousel-slide');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const ticketSelect = document.getElementById('ticket-type');
+        const counter = document.getElementById('slide-counter');
+
+        let currentSlide = 0;
+
+        function updateCarousel(index) {
+            // Toggle visibility
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            // Update Form Select
+            ticketSelect.selectedIndex = index + 1;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateCarousel(currentSlide);
+        }
+
+        // Event Listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Sync when user changes select dropdown manually
+        ticketSelect.addEventListener('change', () => {
+            if(ticketSelect.selectedIndex > 0) {
+                currentSlide = ticketSelect.selectedIndex - 1;
+                updateCarousel(currentSlide);
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCarousel(currentSlide);
         });
     </script>
 </body>

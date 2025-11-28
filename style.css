@@ -76,7 +76,7 @@
            transform: translateY(-2px);
        }
 
-       .logo p {
+       .logo a p {
            font-weight: 500;
            font-size: 1.8rem;
            letter-spacing: -1px;
@@ -275,24 +275,134 @@
        }
 
        .ticket-section {
+           /* Restore Original Background */
            background: url("https://upload.wikimedia.org/wikipedia/commons/1/15/Louis_Wain_The_bachelor_party.jpg") center/cover no-repeat;
-           padding: 8rem 1rem;
            display: flex;
            justify-content: center;
            align-items: center;
+           /* Vertically center items */
+           gap: 2rem;
+           padding: 8rem 2rem;
+           /* Ensure space on sides */
+           flex-wrap: wrap;
+           /* Allows stacking on mobile */
        }
 
-       .ticket-overlay {
+       /* === Panel Common Styles === */
+       .ticket-overlay,
+       .carousel-container {
            backdrop-filter: blur(12px);
-           background: rgba(255, 255, 255, 0.25);
+           background: rgba(255, 255, 255, 0.85);
+           /* Slightly more opaque for readability */
            padding: 3rem 2.5rem;
            border-radius: 16px;
-           max-width: 450px;
            width: 100%;
+           max-width: 450px;
+           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+           display: flex;
+           flex-direction: column;
+       }
+
+       /* Specific Height adjustment to match visual balance */
+       .carousel-container {
+           min-height: 440px;
+           justify-content: center;
+           position: relative;
+           /* Context for absolute arrows */
            text-align: center;
-           color: #111;
-           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-           transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+       }
+
+       /* === Carousel Content === */
+       .carousel-slide {
+           display: none;
+           /* Hidden by default */
+           padding: 0 1.5rem;
+           /* Space for arrows */
+           /* No animation per request */
+       }
+
+       .carousel-slide.active {
+           display: block;
+       }
+
+       .carousel-slide h3 {
+           font-size: 2.2rem;
+           color: var(--accent-dark);
+           font-family: var(--font-main);
+           margin-bottom: 0.5rem;
+           line-height: 1.1;
+       }
+
+       .carousel-slide .price {
+           font-size: 1.8rem;
+           font-weight: 400;
+           color: var(--orange);
+           margin-bottom: 1.5rem;
+           font-family: var(--font-sans);
+       }
+
+       .carousel-slide p {
+           font-family: var(--font-sans);
+           font-size: 1rem;
+           color: #444;
+           line-height: 1.6;
+       }
+
+       /* === Simplified Side Arrows === */
+       .nav-arrow {
+           position: absolute;
+           top: 50%;
+           transform: translateY(-50%);
+           background: transparent;
+           border: none;
+           font-size: 3rem;
+           /* Large, simple character */
+           font-family: var(--font-sans);
+           /* Thin, clean look */
+           font-weight: 200;
+           color: var(--accent-dark);
+           cursor: pointer;
+           padding: 0 10px;
+           transition: color 0.2s ease, transform 0.2s ease;
+           z-index: 10;
+           line-height: 1;
+       }
+
+       .nav-arrow:hover {
+           color: var(--orange);
+           transform: translateY(-50%) scale(1.2);
+       }
+
+       .prev-arrow {
+           left: 10px;
+       }
+
+       .next-arrow {
+           right: 10px;
+       }
+
+       /* === Form Inputs === */
+       .ticket-form select {
+           width: 100%;
+           padding: 0.85rem 1rem;
+           border-radius: 10px;
+           border: none;
+           font-size: 1rem;
+           font-family: var(--font-sans);
+           background: rgba(255, 255, 255, 0.5);
+           /* Slightly distinct from input bg */
+           border: 1px solid rgba(0, 0, 0, 0.1);
+           outline: none;
+           transition: all 0.3s ease;
+           appearance: none;
+           /* Removes default OS arrow */
+           color: #444;
+           cursor: pointer;
+       }
+
+       .ticket-form select:focus {
+           background: #fff;
+           border-color: var(--orange);
        }
 
 
@@ -315,8 +425,7 @@
            gap: 1rem;
        }
 
-       .ticket-form input,
-       .ticket-form select {
+       .ticket-form input {
            width: 100%;
            padding: 0.85rem 1rem;
            border-radius: 10px;
@@ -418,4 +527,9 @@
                flex-direction: column;
                gap: 2.5rem;
            }
+       }
+
+       .flex-horizontal {
+           display: flex;
+           gap: 1em;
        }
