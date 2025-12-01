@@ -20,7 +20,7 @@ As this is a static website, no complex build processes or specific commands are
 *   **File Organization:**
     *   `index.html`: The main landing page.
     *   `home.html`: Potentially another entry point or homepage.
-    *   `style.css`: Contains all styling information for the website.
+    *   `styles/main.css`: Contains all styling information for the website.
     *   `scripts/script.js`: Handles client-side interactivity, such as navigation bar behavior and the ticket booking carousel.
     *   `assets/`: Directory containing all image assets, including artwork for the gallery (`assets/masonry/`) and general site imagery (`assets/`).
     *   `LICENSE`: Contains licensing information for the project.
@@ -29,7 +29,7 @@ As this is a static website, no complex build processes or specific commands are
 
 *   **File Structure:** The project adheres to a conventional structure for static websites, with HTML, CSS, and JavaScript files organized logically in the root directory or in dedicated folders (`scripts/`, `assets/`).
 *   **Styling:**
-    *   The project utilizes CSS with CSS variables (e.g., `--orange`) for theming, as defined in `style.css`.
+    *   The project utilizes CSS with CSS variables (e.g., `--orange`) for theming, as defined in `styles/main.css`.
     *   External fonts are integrated via Google Fonts (`Cormorant Garamond`, `Inter`).
     *   Images are displayed using a masonry layout for the gallery section, enhancing visual presentation.
 *   **Interactivity:** Client-side interactivity is managed by `scripts/script.js`, implementing features such as a responsive navigation bar that hides on scroll and a carousel for selecting ticket types.
