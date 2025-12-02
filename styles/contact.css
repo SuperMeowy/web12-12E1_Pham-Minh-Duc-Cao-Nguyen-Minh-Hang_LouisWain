@@ -1,5 +1,16 @@
 /* styles/contact.css */
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 #contact-hero {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1000&auto=format&fit=crop');
     background-size: cover;
@@ -13,6 +24,7 @@
     font-size: 4rem;
     color: #fff;
     text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    animation: fadeInUp 0.6s ease-out;
 }
 
 #contact-hero p {
@@ -20,6 +32,8 @@
     color: #f2eee7;
     font-weight: 300;
     letter-spacing: 1px;
+    animation: fadeInUp 0.6s ease-out 0.2s;
+    animation-fill-mode: both; /* Keeps it in the final state before animation starts */
 }
 
 /* New styles inspired by ticket section */
@@ -42,6 +56,8 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    animation: fadeInUp 0.8s ease-out 0.4s;
+    animation-fill-mode: both;
 }
 
 .contact-info {
@@ -68,6 +84,11 @@
     color: var(--orange);
     text-decoration: none;
     font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.contact-info .email-info a:hover {
+    color: #b94e28;
 }
 
 .contact-form {
@@ -88,12 +109,14 @@
     outline: none;
     transition: all 0.3s ease;
     color: #444;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
     background: #fff;
     border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(217, 100, 58, 0.2), 0 4px 8px rgba(0,0,0,0.1);
 }
 
 
@@ -112,9 +135,12 @@
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(217, 100, 58, 0.3);
 }
 
 .contact-form button:hover {
     background: #b94e28;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(217, 100, 58, 0.4);
 }

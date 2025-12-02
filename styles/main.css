@@ -535,3 +535,58 @@
            display: flex;
            gap: 1em;
        }
+
+/* Dropdown styles */
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 1rem; /* explicit font size, similar to other nav links */
+    border: none;
+    outline: none;
+    color: var(--accent-dark);
+    background-color: inherit;
+    font-family: var(--font-sans); /* explicit font family */
+    margin: 0 0.8em; /* add margin to match other nav links */
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: 0.25s ease;
+    cursor: pointer; /* ensure it looks clickable */
+    /* Remove padding: 0; as margin now handles spacing */
+}
+
+.nav-links a:hover, .dropdown:hover .dropbtn {
+    color: var(--orange);
+    transform: translateY(-2px);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(242, 238, 231, 0.95);
+    backdrop-filter: blur(8px);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.dropdown-content a {
+    float: none;
+    color: var(--accent-dark);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}

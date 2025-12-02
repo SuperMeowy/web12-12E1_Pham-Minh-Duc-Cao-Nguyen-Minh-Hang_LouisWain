@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Louis Wain Archive | Resources</title>
+    <title>Louis Wain Archive | Library</title>
     <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/resources.css">
+    <link rel="stylesheet" href="../../styles/library.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,24 +17,48 @@
             <div class="logo"> <a href="../../home.html"><p>ФЭС</p><p style="color: var(--orange)">Archive</p></a></div>
             <div class="nav-links">
                 <a href="../../home.html">Home</a>
+                <div class="dropdown">
+                    <a href="../../index.html" class="dropbtn">Currently shown</a>
+                    <div class="dropdown-content">
+                        <a href="../../index.html#about">About</a>
+                        <a href="../../index.html#gallery">Gallery</a>
+                        <a href="../../index.html#tickets">Order tickets</a>
+                    </div>
+                </div>
                 <a href="timeline.html">Timeline</a>
-                <a href="articles.html">Articles</a>
-                <a href="resources.html">Resources</a>
-                <a href="../../home.html#featured">Exhibitions</a>
+                <a href="library.html">Library</a>
                 <a href="../../contact.html">Contact</a>
             </div>
         </nav>
     </header>
 
     <main>
-        <section id="resources-hero" class="unbound">
-            <h1>Further Exploration</h1>
-            <p>External Links and Reading Materials</p>
+        <section id="library-hero" class="unbound">
+            <h1>Library</h1>
+            <p>Writings & Resources</p>
         </section>
 
-        <section id="resources-list" class="unbound">
+        <section id="articles-section" class="unbound">
             <div class="container">
-                <h2>Recommended Resources</h2>
+                <h2>Our Latest Insights</h2>
+                <div class="article-grid">
+                    <div class="article-card">
+                        <h3><a href="../../articles/wain/early-cats.html">The Whimsical World of Louis Wain's Early Cats</a></h3>
+                        <p>An exploration into the charming and conventional depictions of felines that first brought Wain acclaim.</p>
+                        <span class="article-date">December 1, 2025</span>
+                    </div>
+                    <div class="article-card">
+                        <h3><a href="../../articles/wain/psychedelic-period.html">Beyond the Stripes: Wain's Psychedelic Period</a></h3>
+                        <p>Delving into the vibrant and often unsettling abstract works from his later years, and the theories behind them.</p>
+                        <span class="article-date">December 1, 2025</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="resources-section" class="unbound">
+            <div class="container">
+                <h2>Further Exploration</h2>
                 <div class="resource-item">
                     <h3>The Bethlem Museum of the Mind</h3>
                     <p>Official website for the Bethlem Museum, which holds a significant collection of Louis Wain's work.</p>
