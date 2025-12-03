@@ -77,6 +77,11 @@
            transform: translateY(-2px);
        }
 
+       .active {
+         color: var(--orange) !important;
+       }
+
+
        .logo p {
            font-weight: 500;
            font-size: 1.8rem;
@@ -274,6 +279,7 @@
 
        #gallery aside .cta-button:hover {
            background-color: #b94e28;
+           transform: scale(1.05);
        }
 
        .ticket-section {
