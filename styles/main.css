@@ -598,3 +598,17 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+/* Custom classes for logo and footer text */
+.logo-fes {
+    color: #b3b3b3;
+}
+
+.logo-archive {
+    color: var(--orange);
+}
+
+.footer-tagline {
+    color: #b3b3b3;
+    max-width: 300px;
+}
