@@ -29,10 +29,11 @@ As this is a static website, no complex build processes or specific commands are
 
 *   **File Structure:** The project adheres to a conventional structure for static websites, with HTML, CSS, and JavaScript files organized logically in the root directory or in dedicated folders (`scripts/`, `assets/`).
 *   **Styling:**
-    *   The project utilizes CSS with CSS variables (e.g., `--orange`) for theming, as defined in `styles/main.css`.
+    *   The project utilizes CSS with CSS variables (e.g., `--orange`) for theming. All page-specific styles are externalized into dedicated CSS files (e.g., `styles/main.css`, `styles/home.css`) to maintain separation of concerns.
     *   External fonts are integrated via Google Fonts (`Cormorant Garamond`, `Inter`).
     *   Images are displayed using a masonry layout for the gallery section, enhancing visual presentation.
-*   **Interactivity:** Client-side interactivity is managed by `scripts/script.js`, implementing features such as a responsive navigation bar that hides on scroll and a carousel for selecting ticket types.
+*   **Interactivity:** Client-side interactivity is managed exclusively by `scripts/script.js`, implementing features such as a responsive navigation bar and a ticket booking carousel. Inline JavaScript is strictly avoided to maintain clean separation of concerns.
 *   **Semantic HTML:** The HTML structure employs semantic elements (`<header>`, `<main>`, `<section>`, `<footer>`, `<nav>`, `<article>`, `<figure>`) to improve readability and accessibility. `alt` attributes are used for image descriptions.
+*   **Link Management:** Placeholder or dead links are neutralized using `javascript:void(0)` to prevent unintended page navigation and improve user experience when features are not yet implemented.
 *   **Asset Management:** Image assets are centrally located in the `assets` directory, with specific subdirectories for masonry items.
 *   **Licensing:** The presence of a `LICENSE` file indicates that usage terms and conditions are provided.
