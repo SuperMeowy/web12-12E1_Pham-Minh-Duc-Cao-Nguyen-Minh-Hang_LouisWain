@@ -1,624 +1,186 @@
-       :root {
-           --bg-color: #f2eee7;
-           --text-color: #1a1a1a;
-           --font-main: "Cormorant Garamond", serif;
-           --font-sans: "Inter", sans-serif;
-           --orange: #d9643a;
-           --bright-orange: #ff4400;
-           --accent-dark: #3a2f2a;
-       }
-
-       body::before {
-           content: "";
-           position: fixed;
-           inset: 0;
-           pointer-events: none;
-           background-image: url("https://www.transparenttextures.com/patterns/dust.png");
-           opacity: 0.25;
-           z-index: 0;
-       }
-
-       * {
-           box-sizing: border-box;
-           margin: 0;
-           padding: 0;
-       }
-
-       html {
-           scroll-snap-type: y proximity;
-           scroll-behavior: smooth;
-           overscroll-behavior-y: contain;
-       }
-
-       body {
-           background-color: var(--bg-color);
-           color: var(--text-color);
-           font-family: var(--font-main);
-           overflow-x: hidden;
-           line-height: 1.65;
-           position: relative;
-       }
-
-       a {
-           text-decoration: none;
-           color: inherit;
-       }
-
-       nav {
-           position: fixed;
-           top: 0;
-           width: 100%;
-           display: flex;
-           justify-content: space-between;
-           align-items: center;
-           padding: 1.8rem 3rem;
-           background: rgba(242, 238, 231, 0.75);
-           backdrop-filter: blur(8px);
-           border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-           z-index: 100;
-           transition: transform 0.4s ease-in-out, background 0.3s ease-in-out;
-       }
-
-       nav.nav-hidden {
-           transform: translateY(-100%);
-       }
-
-       nav a {
-           margin: 0.8em;
-           color: var(--accent-dark);
-           font-family: var(--font-sans);
-           font-weight: 500;
-           letter-spacing: 0.5px;
-           transition: all 0.3s ease-in-out;
-       }
-
-       nav a:hover {
-           color: var(--orange);
-           transform: translateY(-2px);
-       }
-
-       .active {
-         color: var(--orange) !important;
-       }
-
-
-       .logo p {
-           font-weight: 500;
-           font-size: 1.8rem;
-           letter-spacing: -1px;
-           color: var(--accent-dark);
-           display: inline;
-           flex-shrink: 0;
-       }
-
-       section.unbound {
-           min-height: 100vh;
-           scroll-snap-align: start;
-           display: flex;
-           flex-direction: column;
-           justify-content: center;
-           position: relative;
-           padding: 6rem 0;
-           scroll-snap-stop: always;
-       }
-
-       .container {
-           max-width: 1440px;
-           margin: 0 auto;
-           padding: 0 2rem;
-           width: 100%;
-       }
-
-       h2 {
-           font-size: 3.3rem;
-           font-weight: 300;
-           margin-bottom: 2rem;
-           letter-spacing: -0.5px;
-           color: var(--accent-dark);
-       }
-
-       #hero {
-           background-image: url("https://miro.medium.com/v2/resize:fit:1400/1*qvkwHmpA-_J2NSHpgfjKbA.jpeg");
-           background-size: cover;
-           background-position: center;
-           align-items: center;
-           text-align: center;
-           color: #fff;
-           padding: 0;
-           position: relative;
-       }
-
-       #hero::after {
-           content: "";
-           position: absolute;
-           inset: 0;
-           background: rgba(0, 0, 0, 0.5);
-           z-index: -1;
-       }
-
-       #hero h1 {
-           position: relative;
-           font-size: 4rem;
-           font-weight: 700;
-           letter-spacing: -2px;
-           line-height: 1;
-           margin-bottom: 0.7rem;
-           z-index: 1;
-           color: #fff; /* Explicitly set to white */
-       }
-
-       #hero p {
-           position: relative;
-           font-size: 1.2rem;
-           font-family: var(--font-sans);
-           z-index: 1;
-           color: #fff; /* Changed from #f2eee7 to pure white */
-           font-weight: 500; /* Increased from 300 */
-           letter-spacing: 1px;
-       }
-
-       .about-grid {
-           display: grid;
-           grid-template-columns: 1fr 1fr;
-           gap: 4rem;
-           align-items: center;
-       }
-
-       .about-text article {
-           font-size: 1.3rem;
-           margin-bottom: 1.5rem;
-           color: #444;
-           font-family: var(--font-sans);
-           text-align: justify;
-       }
-
-       .about-img img {
-           width: 100%;
-           max-width: 500px;
-           height: auto;
-           filter: contrast(1.1) grayscale(60%);
-           transition: 0.5s ease;
-           border-radius: 4px;
-           box-shadow: 25px 25px 0px rgba(0, 0, 0, 0.08);
-       }
-
-       .about-img img:hover {
-           filter: grayscale(0%) contrast(1);
-           transform: translate(-8px, -8px);
-           box-shadow: 28px 28px 0px rgba(217, 100, 58, 0.25);
-       }
-
-       .gallery-layout {
-           display: grid;
-           grid-template-columns: 3fr 1fr;
-           gap: 3rem;
-           align-items: flex-start;
-       }
-
-       .masonry {
-           column-count: 3;
-           column-gap: 2rem;
-       }
-
-       .item {
-           position: relative;
-           width: 100%;
-           margin-bottom: 2rem;
-           break-inside: avoid;
-           display: inline-block;
-       }
-
-       .item img {
-           width: 100%;
-           display: block;
-           border-radius: 3px;
-           transition: transform 0.4s ease, box-shadow 0.3s ease, filter 0.3s ease;
-           filter: contrast(0.9) saturate(0.8) brightness(0.95);
-       }
-
-       .item:hover img {
-           transform: scale(1.02);
-           filter: brightness(1);
-           box-shadow: 0 18px 30px rgba(0, 0, 0, 0.15);
-       }
-
-       .item figcaption {
-           position: absolute;
-           bottom: 0;
-           left: 0;
-           right: 0;
-           background-color: rgba(58, 47, 42, 0.85);
-           color: #fff;
-           font-family: var(--font-sans);
-           font-size: 0.9rem;
-           text-align: center;
-           padding: 1rem;
-           opacity: 0;
-           transition: opacity 0.3s ease-in-out;
-           pointer-events: none;
-           backdrop-filter: blur(2px);
-       }
-
-       .item:hover figcaption {
-           opacity: 1;
-       }
-
-       #gallery aside {
-           background-color: rgba(255, 255, 255, 0.6);
-           backdrop-filter: blur(5px);
-           padding: 2rem;
-           border-radius: 4px;
-           border: 1px solid rgba(0, 0, 0, 0.05);
-           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
-           position: sticky;
-           top: 120px;
-       }
-
-       #gallery aside h3 {
-           font-size: 1.8rem;
-           margin-bottom: 1rem;
-           color: var(--orange);
-           font-family: var(--font-main);
-       }
-
-       #gallery aside p {
-           color: #555;
-           margin-bottom: 1.5rem;
-           font-size: 1rem;
-           font-family: var(--font-sans);
-       }
-
-       #gallery aside .cta-button {
-           display: inline-block;
-           background: var(--orange);
-           color: white;
-           padding: 0.85rem 1.5rem;
-           text-decoration: none;
-           border-radius: 4px;
-           font-weight: 500;
-           font-family: var(--font-sans);
-           transition: 0.1s ease-in-out;
-       }
-
-       #gallery aside .cta-button:hover {
-           background-color: #b94e28;
-           transform: scale(1.05) translateY(-5px);
-           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-       }
-       .ticket-section {
-           /* Restore Original Background */
-           background: url("https://upload.wikimedia.org/wikipedia/commons/1/15/Louis_Wain_The_bachelor_party.jpg") center/cover no-repeat;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           /* Vertically center items */
-           gap: 2rem;
-           padding: 8rem 2rem;
-           /* Ensure space on sides */
-           flex-wrap: wrap;
-           /* Allows stacking on mobile */
-       }
-
-       /* === Panel Common Styles === */
-       .ticket-overlay,
-       .carousel-container {
-           backdrop-filter: blur(12px);
-           background: rgba(255, 255, 255, 0.85);
-           /* Slightly more opaque for readability */
-           padding: 3rem 2.5rem;
-           border-radius: 16px;
-           width: 100%;
-           max-width: 450px;
-           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-           display: flex;
-           flex-direction: column;
-       }
-
-       /* Specific Height adjustment to match visual balance */
-       .carousel-container {
-           min-height: 440px;
-           justify-content: center;
-           position: relative;
-           /* Context for absolute arrows */
-           text-align: center;
-       }
-
-       /* === Carousel Content === */
-       .carousel-slide {
-           display: none;
-           /* Hidden by default */
-           padding: 0 1.5rem;
-           /* Space for arrows */
-           /* No animation per request */
-       }
-
-       .carousel-slide.active {
-           display: block;
-       }
-
-       .carousel-slide h3 {
-           font-size: 2.2 rem;
-           color: var(--accent-dark);
-           font-family: var(--font-main);
-           margin-bottom: 0.5rem;
-           line-height: 1.1;
-       }
-
-       .carousel-slide .price {
-           font-size: 1.8rem;
-           font-weight: 400;
-           color: var(--orange);
-           margin-bottom: 1.5rem;
-           font-family: var(--font-sans);
-       }
-
-       .carousel-slide p {
-           font-family: var(--font-sans);
-           font-size: 1rem;
-           color: #444;
-           line-height: 1.6;
-       }
-
-       /* === Simplified Side Arrows === */
-       .nav-arrow {
-           position: absolute;
-           top: 50%;
-           transform: translateY(-50%);
-           background: transparent;
-           border: none;
-           font-size: 3rem;
-           /* Large, simple character */
-           font-family: var(--font-sans);
-           /* Thin, clean look */
-           font-weight: 200;
-           color: var(--accent-dark);
-           cursor: pointer;
-           padding: 0 10px;
-           transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
-           z-index: 10;
-           line-height: 1;
-       }
-
-       .nav-arrow:hover {
-           color: var(--orange);
-           transform: translateY(-50%) scale(1.2);
-       }
-
-       .prev-arrow {
-           left: 10px;
-       }
-
-       .next-arrow {
-           right: 10px;
-       }
-
-       /* === Form Inputs === */
-       .ticket-form select {
-           width: 100%;
-           padding: 0.85rem 1rem;
-           border-radius: 10px;
-           border: none;
-           font-size: 1rem;
-           font-family: var(--font-sans);
-           background: rgba(255, 255, 255, 0.5);
-           /* Slightly distinct from input bg */
-           border: 1px solid rgba(0, 0, 0, 0.1);
-           outline: none;
-           transition: all 0.3s ease;
-           appearance: none;
-           /* Removes default OS arrow */
-           color: #444;
-           cursor: pointer;
-       }
-
-       .ticket-form select:focus {
-           background: #fff;
-           border-color: var(--orange);
-       }
-
-
-       .ticket-section h2 {
-           font-size: 2.5rem;
-           margin-bottom: 0.5rem;
-           color: #000;
-       }
-
-       .ticket-sub {
-           font-size: 1rem;
-           margin-bottom: 2rem;
-           opacity: 0.8;
-           font-family: var(--font-sans);
-       }
-
-       .ticket-form {
-           display: flex;
-           flex-direction: column;
-           gap: 1rem;
-       }
-
-       .ticket-form input {
-           width: 100%;
-           padding: 0.85rem 1rem;
-           border-radius: 10px;
-           border: none;
-           font-size: 1rem;
-           font-family: var(--font-sans);
-           background: rgba(255, 255, 255, 0.85);
-           outline: none;
-           transition: all 0.3s ease;
-       }
-
-       .ticket-form button {
-           margin-top: 0.5rem;
-           padding: 0.9rem;
-           border: none;
-           border-radius: 10px;
-           background: var(--orange);
-           color: white;
-           font-size: 1.1rem;
-           font-weight: 600;
-           cursor: pointer;
-           transition: all 0.3s ease-in-out;
-       }
-
-       .ticket-form input:focus {
-           transform: translateY(-5px);
-       }
-       
-       .ticket-form button:hover {
-           background: #b94e28;
-           transform: scale(1.05) translateY(-5px);
-       }
-       footer {
-           background-color: #171412;
-           color: #f2eee7;
-           padding: 4rem 0;
-           scroll-snap-align: start;
-       }
-
-       .footer-content {
-           display: flex;
-           justify-content: space-between;
-           align-items: flex-start;
-           gap: 4rem;
-       }
-
-       .footer-col h3 {
-           font-size: 1.6rem;
-           margin-bottom: 1rem;
-           color: var(--orange);
-           font-family: var(--font-main);
-       }
-
-       .footer-col ul {
-           list-style: none;
-       }
-
-       .footer-col li {
-           margin-bottom: 0.6rem;
-       }
-
-       .footer-col a {
-           color: #b9b7b4;
-           font-family: var(--font-sans);
-           transition: all 0.3s ease-in-out;
-       }
-
-       .footer-col a:hover {
-           color: #fff;
-           transform: translateY(-2px);
-       }
-
-       .hamburger {
-           display: none;
-           flex-direction: column;
-           cursor: pointer;
-           padding: 10px;
-           z-index: 101; /* Above nav links */
-       }
-
-       .hamburger .bar {
-           width: 25px;
-           height: 3px;
-           background-color: var(--accent-dark);
-           margin: 4px 0;
-           transition: 0.3s;
-       }
-
-       @media (max-width: 800px) {
-           #hero h1 {
-               font-size: 3.4rem;
-           }
-
-           nav {
-               padding: 1.5rem 1.8rem;
-           }
-
-           .nav-links {
-               display: none;
-               flex-direction: column;
-               width: 100%;
-               position: absolute;
-               top: 0;
-               left: 0;
-               height: 100vh;
-               background-color: rgba(242, 238, 231, 0.98);
-               backdrop-filter: blur(10px);
-               justify-content: center;
-               align-items: center;
-               transform: translateX(100%);
-               transition: transform 0.3s ease-in-out;
-           }
-
-           .nav-links.active {
-               transform: translateX(0);
-               display: flex;
-           }
-
-           .nav-links a {
-               margin: 1em 0;
-               font-size: 1.5rem;
-               color: var(--accent-dark);
-           }
-
-           .hamburger {
-               display: flex;
-           }
-
-           .about-grid {
-               grid-template-columns: 1fr;
-           }
-
-           .gallery-layout {
-               grid-template-columns: 1fr;
-           }
-
-           .masonry {
-               column-count: 1;
-           }
-
-           #gallery aside {
-               position: static;
-               margin-top: 2rem;
-           }
-
-           section.unbound {
-               padding-top: 7rem;
-           }
-
-           .footer-content {
-               flex-direction: column;
-               gap: 2.5rem;
-           }
-
-           .carousel-container {
-               display: none;
-           }
-       }
-
-       .flex-horizontal {
-           display: flex;
-           gap: 1em;
-       }
-
-.text-glow-h1 {
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 255, 255, 0.7);
+@import url(variables.css);
+@import url(navigation.css);
+@import url(hero.css);
+@import url(about.css);
+@import url(gallery.css);
+@import url(ticket.css);
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("https://www.transparenttextures.com/patterns/dust.png");
+  opacity: 0.25;
+  z-index: 0;
 }
 
-.text-glow-p {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
+html {
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+  overscroll-behavior-y: contain;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+  line-height: 1.65;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.active {
+  color: var(--orange) !important;
+}
+
+.logo p {
+  font-weight: 500;
+  font-size: 1.8rem;
+  letter-spacing: -1px;
+  color: var(--accent-dark);
+  display: inline;
+  flex-shrink: 0;
+}
+
+section.unbound {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: 6rem 0;
+  scroll-snap-stop: always;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+h2 {
+  font-size: 3.3rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  letter-spacing: -0.5px;
+  color: var(--accent-dark);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 4rem;
+}
+
+.footer-col h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: var(--orange);
+  font-family: var(--font-main);
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col li {
+  margin-bottom: 0.6rem;
+}
+
+.footer-col a {
+  color: #b9b7b4;
+  font-family: var(--font-sans);
+  transition: all 0.3s ease-in-out;
+}
+
+.footer-col a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 101; /* Above nav links */
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--accent-dark);
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+@media (max-width: 800px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .masonry {
+    column-count: 1;
+  }
+
+  #gallery aside {
+    position: static;
+    margin-top: 2rem;
+  }
+
+  section.unbound {
+    padding-top: 7rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .carousel-container {
+    display: none;
+  }
+}
+
+.flex-horizontal {
+  display: flex;
+  gap: 1em;
+}
+
 
 /* Custom classes for logo and footer text */
 .logo-fes {
-    color: #b3b3b3;
+  color: #b3b3b3;
 }
 
 .logo-archive {
-    color: var(--orange);
+  color: var(--orange);
 }
 
 .footer-tagline {
-    color: #b3b3b3;
-    max-width: 300px;
+  color: #b3b3b3;
+  max-width: 300px;
 }

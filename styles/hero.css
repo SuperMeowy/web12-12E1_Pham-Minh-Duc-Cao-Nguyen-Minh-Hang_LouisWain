@@ -1,0 +1,50 @@
+@import url(main.css);
+
+#hero {
+  background-image: url("https://miro.medium.com/v2/resize:fit:1400/1*qvkwHmpA-_J2NSHpgfjKbA.jpeg");
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 0;
+  position: relative;
+}
+
+#hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+#hero h1 {
+  position: relative;
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 0.7rem;
+  z-index: 1;
+  color: #fff; /* Explicitly set to white */
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8),
+    0 0 25px rgba(255, 255, 255, 0.7);
+}
+
+#hero p {
+  position: relative;
+  font-size: 1.2rem;
+  font-family: var(--font-sans);
+  z-index: 1;
+  color: #fff; /* Changed from #f2eee7 to pure white */
+  font-weight: 500; /* Increased from 300 */
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 800px) {
+  #hero h1 {
+    font-size: 3.4rem;
+  }
+}
