@@ -25,6 +25,7 @@
        }
 
        html {
+           scroll-snap-type: y proximity;
            scroll-behavior: smooth;
            overscroll-behavior-y: contain;
        }
@@ -98,6 +99,7 @@
            justify-content: center;
            position: relative;
            padding: 6rem 0;
+           scroll-snap-stop: always;
        }
 
        .container {
