@@ -557,7 +557,7 @@
 
            .nav-links a, .dropdown .dropbtn {
                margin: 1em 0;
-               font-size: 1.5rem;
+               font-size: 1.5rem !important; /* Added !important to ensure override */
                color: var(--accent-dark);
            }
 
