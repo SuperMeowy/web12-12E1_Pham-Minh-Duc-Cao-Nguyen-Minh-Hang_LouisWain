@@ -1,6 +1,6 @@
 .ticket-section {
   /* Restore Original Background */
-  background: url("https://upload.wikimedia.org/wikipedia/commons/1/15/Louis_Wain_The_bachelor_party.jpg")
+  background: url("../assets/masonry/13.jpg")
     center/cover no-repeat;
   display: flex;
   justify-content: center;

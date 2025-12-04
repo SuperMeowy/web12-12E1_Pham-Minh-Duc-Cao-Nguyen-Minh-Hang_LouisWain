@@ -15,7 +15,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/15/Louis_Wain_The_bachelor_party.jpg");
+  background-image: url("../assets//masonry/13.jpg");
   background-size: cover;
   background-position: center;
   filter: brightness(0.8) contrast(1.2);

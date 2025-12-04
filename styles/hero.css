@@ -1,7 +1,7 @@
 @import url(main.css);
 
 #hero {
-  background-image: url("https://miro.medium.com/v2/resize:fit:1400/1*qvkwHmpA-_J2NSHpgfjKbA.jpeg");
+  background-image: url("../assets/owls.jpg");
   background-size: cover;
   background-position: center;
   align-items: center;
