@@ -21,7 +21,6 @@
     margin-bottom: 0.7rem;
     z-index: 1;
     color: #fff;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
 #library-hero p {
@@ -32,7 +31,6 @@
     color: #f2eee7;
     font-weight: 300;
     letter-spacing: 1px;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 #articles-section {

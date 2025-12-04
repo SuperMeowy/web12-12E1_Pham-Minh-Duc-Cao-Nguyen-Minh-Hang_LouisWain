@@ -138,7 +138,6 @@
            position: relative;
            font-size: 4rem;
            font-weight: 700;
-           text-shadow: 0 4px 25px rgba(0,0,0,0.7); /* Stronger white text-shadow */
            letter-spacing: -2px;
            line-height: 1;
            margin-bottom: 0.7rem;
@@ -154,7 +153,6 @@
            color: #fff; /* Changed from #f2eee7 to pure white */
            font-weight: 500; /* Increased from 300 */
            letter-spacing: 1px;
-           text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
        }
 
        .about-grid {
@@ -555,30 +553,14 @@
                display: flex;
            }
 
-           .nav-links a, .dropdown .dropbtn {
+           .nav-links a {
                margin: 1em 0;
-               font-size: 1.5rem !important; /* Added !important to ensure override */
+               font-size: 1.5rem;
                color: var(--accent-dark);
            }
 
            .hamburger {
                display: flex;
-           }
-           
-           .dropdown-content {
-               position: static;
-               background-color: transparent;
-               box-shadow: none;
-               text-align: center;
-           }
-
-           .dropdown:hover .dropdown-content {
-               display: none; /* Hide on hover for mobile, JS will handle */
-           }
-
-           .dropdown-content a {
-               padding: 8px 16px;
-               font-size: 1.2rem;
            }
 
            .about-grid {
@@ -617,59 +599,12 @@
            gap: 1em;
        }
 
-/* Dropdown styles */
-.dropdown {
-    float: left;
-    overflow: hidden;
+.text-glow-h1 {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 255, 255, 0.7);
 }
 
-.dropdown .dropbtn {
-    font-size: 1rem; /* explicit font size, similar to other nav links */
-    border: none;
-    outline: none;
-    color: var(--accent-dark);
-    background-color: inherit;
-    font-family: var(--font-sans); /* explicit font family */
-    margin: 0 0.8em; /* add margin to match other nav links */
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer; /* ensure it looks clickable */
-    /* Remove padding: 0; as margin now handles spacing */
-}
-
-.nav-links a:hover, .dropdown:hover .dropbtn {
-    color: var(--orange);
-    transform: translateY(-2px);
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: rgba(242, 238, 231, 0.95);
-    backdrop-filter: blur(8px);
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    border-radius: 4px;
-    margin-top: 5px;
-}
-
-.dropdown-content a {
-    float: none;
-    color: var(--accent-dark);
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-content a:hover {
-    background-color: rgba(0,0,0,0.05);
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
+.text-glow-p {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 
 /* Custom classes for logo and footer text */
