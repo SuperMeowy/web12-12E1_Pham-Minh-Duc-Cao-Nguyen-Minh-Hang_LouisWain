@@ -172,15 +172,23 @@ h2 {
 
 
 /* Custom classes for logo and footer text */
-.logo-fes {
+p.logo-fes {
   color: #b3b3b3;
 }
 
-.logo-archive {
+p.logo-archive {
   color: var(--orange);
 }
 
 .footer-tagline {
   color: #b3b3b3;
   max-width: 300px;
+}
+
+.copynotice {
+  margin-top: 4rem; 
+  border-top: 1px solid #333; 
+  padding-top: 1rem; 
+  color: #AAA; 
+  font-size: 0.9rem;
 }
