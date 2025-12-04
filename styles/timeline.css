@@ -1,6 +1,6 @@
 /* Timeline Specific Styles */
 #timeline-hero {
-    background-image: url('../assets/louis.jpg'); 
+    background-image: url('../assets/banner_wain.jpg'); 
     background-size: cover;
     background-position: center 35%;
     align-items: center;
@@ -8,6 +8,7 @@
     color: #fff;
     padding: 0;
     position: relative;
+    height: 60vh; /* Restore appropriate height */
 }
 
 #timeline-hero::after {
