@@ -4,6 +4,7 @@
 @import url(about.css);
 @import url(gallery.css);
 @import url(ticket.css);
+@import url(patch.css);
 
 body::before {
   content: "";
