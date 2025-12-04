@@ -509,6 +509,22 @@
            transform: translateY(-2px);
        }
 
+       .hamburger {
+           display: none;
+           flex-direction: column;
+           cursor: pointer;
+           padding: 10px;
+           z-index: 101; /* Above nav links */
+       }
+
+       .hamburger .bar {
+           width: 25px;
+           height: 3px;
+           background-color: var(--accent-dark);
+           margin: 4px 0;
+           transition: 0.3s;
+       }
+
        @media (max-width: 800px) {
            #hero h1 {
                font-size: 3.4rem;
@@ -516,6 +532,53 @@
 
            nav {
                padding: 1.5rem 1.8rem;
+           }
+
+           .nav-links {
+               display: none;
+               flex-direction: column;
+               width: 100%;
+               position: absolute;
+               top: 0;
+               left: 0;
+               height: 100vh;
+               background-color: rgba(242, 238, 231, 0.98);
+               backdrop-filter: blur(10px);
+               justify-content: center;
+               align-items: center;
+               transform: translateX(100%);
+               transition: transform 0.3s ease-in-out;
+           }
+
+           .nav-links.active {
+               transform: translateX(0);
+               display: flex;
+           }
+
+           .nav-links a, .dropdown .dropbtn {
+               margin: 1em 0;
+               font-size: 1.5rem;
+               color: var(--accent-dark);
+           }
+
+           .hamburger {
+               display: flex;
+           }
+           
+           .dropdown-content {
+               position: static;
+               background-color: transparent;
+               box-shadow: none;
+               text-align: center;
+           }
+
+           .dropdown:hover .dropdown-content {
+               display: none; /* Hide on hover for mobile, JS will handle */
+           }
+
+           .dropdown-content a {
+               padding: 8px 16px;
+               font-size: 1.2rem;
            }
 
            .about-grid {
@@ -542,6 +605,10 @@
            .footer-content {
                flex-direction: column;
                gap: 2.5rem;
+           }
+
+           .carousel-container {
+               display: none;
            }
        }
 
