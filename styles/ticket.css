@@ -179,7 +179,7 @@
 }
 
 .ticket-form button:hover {
-  background: #b94e28;
+  background: var(--dark-orange);
   transform: scale(1.05) translateY(-5px);
 }
 footer {

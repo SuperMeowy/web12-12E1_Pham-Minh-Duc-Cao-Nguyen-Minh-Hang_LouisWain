@@ -137,5 +137,5 @@
 }
 
 .resource-item .cta-button:hover {
-  background-color: #b94e28;
+  background-color: var(--dark-orange);
 }

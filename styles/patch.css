@@ -1,6 +1,6 @@
 /*Patching Louis Wain's page styling, mainly the hero section*/
 #louis-hero h1 {
-    text-shadow: 4px 4px 4px black;
+    text-shadow: 4px 4px 2px black;
     font-size: 10rem;
     font-family: "Kapakana", cursive;
     font-optical-sizing: auto;
